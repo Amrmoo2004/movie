@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}{% endblock %}</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+  <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/grid.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/app.css') }}">
+
+
+</head>
+<body>
+  <div class="nav-wrapper">
+    <div class="container">
+      <div class="nav">
+        <a href="{{ url_for('home') }}" class="logo">
+          <i class='bx bx-movie-play bx-tada main-color'></i>Mov<span class="main-color">i</span>z
+        </a>
+        <ul class="nav-menu" id="nav-menu">
+          <li><a href="{{ url_for('home') }}">Home</a></li>
+          <li><a href="{{ url_for('genre') }}">Genre</a></li>
+          <li><a href="{{ url_for('movies_page') }}">Movies</a></li>
+          <li><a href="{{ url_for('about') }}">About</a></li>
+          <li><a href="{{ url_for('login') }}" class="btn btn-hover"><span>Sign in</span></a></li>
+          <li><a href="{{ url_for('signup') }}" class="btn btn-hover"><span>Sign up</span></a></li>
+        </ul>
+        <div class="hamburger-menu" id="hamburger-menu">
+          <div class="hamburger"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {% block content %}{% endblock %}
+
+  <footer class="section">
+  </footer>
+  <div class="copyright">
+    Copyright 2024
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+  <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+  <script>
+    // In your app.js or a separate JavaScript file
+    document.addEventListener('DOMContentLoaded', function() { // Wait for DOM to load
+
+      const movieItems = document.querySelectorAll('.movie-item');
+
+      movieItems.forEach(item => {
+        item.addEventListener('click', () => {
+          const movieId = item.dataset.movieId;
+          const movieDetailsUrl = `/movie/${movieId}`;
+          window.location.href = movieDetailsUrl;
+        });
+      });
+    });
+  </script>
+</body>
+</html>

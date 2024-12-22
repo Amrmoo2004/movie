@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+{% block title %}Moviz - Genres{% endblock %}
+
+{% block content %}
+<section class="movies">
+    <div class="container">
+        {% if action_movies %}
+        <h2 class="title">Action Movies</h2>
+        <div class="movies-items">
+            {% for movie in action_movies %}
+            <div class="movie-item" data-movie-id="{{ movie.id }}">
+                <img src="{{ url_for('static', filename=movie.image) }}" alt="{{ movie.title }}">
+                <div class="movie-item-content">
+                    <h3>{{ movie.title }}</h3>
+                    <p>Rating: {{ movie.rating }}</p>
+                    <p>Genre: {{ movie.genre }}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        {% if scifi_movies %}
+        <h2 class="title">Sci-Fi Movies</h2>
+        <div class="movies-items">
+            {% for movie in scifi_movies %}
+            <div class="movie-item" data-movie-id="{{ movie.id }}">
+                <img src="{{ url_for('static', filename=movie.image) }}" alt="{{ movie.title }}">
+                <div class="movie-item-content">
+                    <h3>{{ movie.title }}</h3>
+                    <p>Rating: {{ movie.rating }}</p>
+                    <p>Genre: {{ movie.genre }}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        {% if horror_movies %}
+        <h2 class="title">Horror Movies</h2>
+        <div class="movies-items">
+            {% for movie in horror_movies %}
+            <div class="movie-item" data-movie-id="{{ movie.id }}">
+                <img src="{{ url_for('static', filename=movie.image) }}" alt="{{ movie.title }}">
+                <div class="movie-item-content">
+                    <h3>{{ movie.title }}</h3>
+                    <p>Rating: {{ movie.rating }}</p>
+                    <p>Genre: {{ movie.genre }}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        {% if thriller_movies %}
+        <h2 class="title">Thriller Movies</h2>
+        <div class="movies-items">
+            {% for movie in thriller_movies %}
+            <div class="movie-item" data-movie-id="{{ movie.id }}">
+                <img src="{{ url_for('static', filename=movie.image) }}" alt="{{ movie.title }}">
+                <div class="movie-item-content">
+                    <h3>{{ movie.title }}</h3>
+                    <p>Rating: {{ movie.rating }}</p>
+                    <p>Genre: {{ movie.genre }}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        {% if romance_movies %}
+        <h2 class="title">Romance Movies</h2>
+        <div class="movies-items">
+            {% for movie in romance_movies %}
+            <div class="movie-item" data-movie-id="{{ movie.id }}">
+                <img src="{{ url_for('static', filename=movie.image) }}" alt="{{ movie.title }}">
+                <div class="movie-item-content">
+                    <h3>{{ movie.title }}</h3>
+                    <p>Rating: {{ movie.rating }}</p>
+                    <p>Genre: {{ movie.genre }}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+</section>
+{% endblock %} 

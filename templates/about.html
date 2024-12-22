@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block title %}Moviz - About{% endblock %}
+{% block content %}
+
+<div class="about-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-6 col-md-12"> 
+                <div class="about-image">
+                    <img src="{{ url_for('static', filename='images/About Us.webp') }}" alt="About Us">        </div>
+            </div>
+            <div class="col-6 col-md-12"> 
+                <div class="about-content">
+                    <h2>About Flix</h2>
+                    <p>
+                        Welcome to Flix, your one-stop destination for the latest movies, TV series, and cartoons! We're passionate about providing you with a vast collection of entertainment to stream anytime, anywhere.
+                    </p>
+                    <p>
+                        Our mission is to bring you the best cinematic experiences with a user-friendly interface, high-quality streaming, and a diverse library of content. Whether you're in the mood for action-packed blockbusters, heartwarming dramas, or hilarious comedies, we've got something for everyone.
+                    </p>
+                    <p>
+                        At Flix, we're committed to constantly updating our collection with the newest releases and timeless classics. We strive to create a community of movie enthusiasts where you can discover, enjoy, and share your love for film.
+                    </p>
+                    <p>
+                        Join us on this exciting journey of cinematic exploration!
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}  
