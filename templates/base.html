@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{% block title %}{% endblock %}</title>
   <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;700;900&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
   <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
   <link rel="stylesheet" href="{{ url_for('static', filename='css/grid.css') }}">
@@ -13,6 +15,7 @@
 
 
 </head>
+
 <body>
   <div class="nav-wrapper">
     <div class="container">
@@ -24,6 +27,7 @@
           <li><a href="{{ url_for('home') }}">Home</a></li>
           <li><a href="{{ url_for('genre') }}">Genre</a></li>
           <li><a href="{{ url_for('movies_page') }}">Movies</a></li>
+          <li><a href="{{ url_for('watchlist_page') }}">Watchlist</a></li>
           <li><a href="{{ url_for('about') }}">About</a></li>
           <li><a href="{{ url_for('login') }}" class="btn btn-hover"><span>Sign in</span></a></li>
           <li><a href="{{ url_for('signup') }}" class="btn btn-hover"><span>Sign up</span></a></li>
@@ -48,7 +52,7 @@
   <script src="{{ url_for('static', filename='js/app.js') }}"></script>
   <script>
     // In your app.js or a separate JavaScript file
-    document.addEventListener('DOMContentLoaded', function() { // Wait for DOM to load
+    document.addEventListener('DOMContentLoaded', function () { // Wait for DOM to load
 
       const movieItems = document.querySelectorAll('.movie-item');
 
@@ -62,4 +66,5 @@
     });
   </script>
 </body>
+
 </html>

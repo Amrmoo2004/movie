@@ -322,6 +322,19 @@ movies = [
     }
 ]
 
+
+watchlist = []
+
+def add_to_watchlist(movie_id):
+    movie = next((m for m in movies if m['id'] == movie_id), None)
+    if movie and movie not in watchlist:
+        watchlist.append(movie)
+        return True
+    return False
+
+def get_watchlist():
+    return watchlist
+
 def get_movie_by_id(movie_id):
     # Convert movie_id to int since we're comparing with integer IDs
     movie_id = int(movie_id)
@@ -331,11 +344,20 @@ def get_movie_by_id(movie_id):
     return None
 
 def add_review(movie_id, review):
-    """Add a review to a specific movie."""
-    if movie_id in movies:
+    movie = next((m for m in movies if m['id'] == movie_id), None)
+    if movie:
         review["helpful_count"] = 0
         review["not_helpful_count"] = 0
-        review["date"] = date.today()
-        movies[movie_id]["reviews"].append(review)
+        review["date"] = date.today().isoformat()
+        movie["reviews"].append(review)
+        return True
+    return False
+
+
+def remove_from_watchlist(movie_id):
+    global watchlist
+    movie = next((m for m in watchlist if m['id'] == movie_id), None)
+    if movie:
+        watchlist.remove(movie)
         return True
     return False

@@ -6,9 +6,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Movie Website{% endblock %}</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+
+
 </head>
 
-<body>
+<body style="padding-top: var(--nav-height); font-family: 'Cairo', sans-serif;">
+    <div class="nav-wrapper" style="color: var(--text-color); padding: 0%; margin: 0%; box-sizing: border-box;">
+        <div class="container" style="box-sizing: border-box;">
+            <div class="nav" style="padding: 0%; margin: 0%; box-sizing: border-box;">
+                <a href="{{ url_for('home') }}" class="logo"
+                    style="text-decoration: none; padding: 0%; margin: 0%; box-sizing: border-box;">
+                    <i class='bx bx-movie-play bx-tada main-color'
+                        style="padding: 0%; margin: 0%; box-sizing: border-box;"></i>Mov<span
+                        class="main-color">i</span>z
+                </a>
+                <ul class="nav-menu li~li" style="margin: 0%; box-sizing: border-box;" id="nav-menu">
+                    <li><a href="{{ url_for('home') }}">Home</a></li>
+                    <li><a href="{{ url_for('genre') }}">Genre</a></li>
+                    <li><a href="{{ url_for('movies_page') }}">Movies</a></li>
+                    <li><a href="{{ url_for('watchlist_page') }}">Watchlist</a></li>
+                    <li><a href="{{ url_for('about') }}">About</a></li>
+                    <li><a href="{{ url_for('login') }}" class="btn btn-hover"
+                            style="margin: 0; box-sizing: border-box;"><span
+                                style="padding: 0; margin: 0; box-sizing: border-box;">Sign in</span></a></li>
+                    <li><a href="{{ url_for('signup') }}" class="btn btn-hover"><span>Sign up</span></a></li>
+                </ul>
+                <div class="hamburger-menu" id="hamburger-menu">
+                    <div class="hamburger"></div>
+                </div>
+            </div>
+        </div>
+    </div>
     <main>
         {% block content %}
         {% endblock %}

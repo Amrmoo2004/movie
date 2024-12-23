@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+
+{% block title %}My Watchlist{% endblock %}
+
+{% block content %}
+<div class="movie-details">
+    <h1>My Watchlist</h1>
+    {% if watchlist %}
+    <ul>
+        {% for movie in watchlist %}
+        <li>
+            <h3>{{ movie.title }}</h3>
+            <img src="{{ url_for('static', filename=movie.image) }}" alt="{{ movie.title }}" width="150">
+            <p><strong>Genres:</strong> {{ ', '.join(movie.genres) }}</p>
+            <p><strong>Rating:</strong> {{ movie.rating }}</p>
+            <button class="remove-button" data-movie-id="{{ movie.id }}">Remove from Watchlist</button>
+        </li>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <p>Your watchlist is empty!</p>
+    {% endif %}
+</div>
+<script>
+    document.querySelectorAll('.remove-button').forEach(button => {
+        button.addEventListener('click', async (event) => {
+            const movieId = event.target.getAttribute('data-movie-id');
+            try {
+                const response = await fetch(`/api/watchlist/${movieId}`, {
+                    method: 'DELETE',
+                    headers: { 'Content-Type': 'application/json' },
+                });
+                const result = await response.json();
+                if (result.success) {
+                    alert(result.message);
+                    location.reload(); // Reload the page to reflect changes
+                } else {
+                    alert("Error: " + result.message);
+                }
+            } catch (error) {
+                console.error('Error removing movie from watchlist:', error);
+                alert('An error occurred. Please try again later.');
+            }
+        });
+    });
+</script>
+{% endblock %}

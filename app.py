@@ -2,6 +2,7 @@ from flask import Flask, render_template
 from data import get_movie_by_id, movies
 from api_routes import api
 from flask import Flask, render_template, request, redirect, url_for
+from data import get_watchlist
 
 # Create app instance first
 app = Flask(__name__, template_folder='templates')
@@ -21,6 +22,10 @@ def signup():
     # ... your signup logic ...
     return render_template('signup.html')
     
+@app.route('/watchlist', methods=['GET'])
+def watchlist_page():
+    return render_template('watchlist.html', watchlist=get_watchlist())
+
 @app.route('/')
 def home():
     movies = [
